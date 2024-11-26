@@ -1,0 +1,48 @@
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: info,health
+  info:
+    ssl:
+      enabled: true
+  health:
+    ssl:
+      certificate-validity-warning-threshold: 9999999999
+  endpoint:
+    health:
+      show-details: always
+spring:
+ ssl:
+   bundle:
+     jks:
+       secure-service:
+         key:
+           alias: "secure-service"
+         keystore:
+           location: "classpath:keystore.p12"
+           password: "FooBar"
+           type: "PKCS12"
+       web-server:
+         key:
+           alias: "secure-service"
+         keystore:
+           location: "classpath:keystore.p12"
+           password: "FooBar"
+           type: "PKCS12"
+       client:
+         key:
+           alias: "secure-service"
+         keystore:
+           location: "classpath:clientkeystore.p12"
+           password: "password"
+           type: "PKCS12"
+       server:
+         key:
+           alias: "secure-service"
+         keystore:
+           location: "classpath:serverkeystore.p12"
+           password: "password"
+           type: "PKCS12"
